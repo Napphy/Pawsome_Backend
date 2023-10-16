@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.main {
+font-weight: bold;
+font-size: xx-medium;
+background-color: tomato;
+}
+
+.table{
+color: blue;
+background-color: yellow;
+}
+</style>
+
+
+<title>Adding a Dog</title>
+<meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       </head>
+       <body>
+       <h2>Add Dog Form</h2>
+        <div class="main">
+               <a href="/">Back</a>
+        </div>
+       <form action="/add-dog" method="post" enctype="multipart/form-data">
+         <label for="dogName">Dog's name:</label><br>
+         <input type="text" id="dogName" name="dogName"><br>
+         <label for="dogBreed">Dog's Breed:</label><br>
+         <input type="text" id="dogBreed" name="dogBreed"><br>
+         <label for="dogAge">Dog's Age:</label><br>
+         <input type="number" id="dogAge" name ="dogAge"><br>
+         <label for="dogImage">Dog's Picture:</label><br>
+         <input type="file" id="dogImage" name ="file"><br>
+         <br>
+         <input type="submit" value="Submit"/>
+       </form>
+
+</body>
+</html>

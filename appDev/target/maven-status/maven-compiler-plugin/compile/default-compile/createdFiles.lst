@@ -1,0 +1,6 @@
+com\group5\appDev\repository\dogRepository.class
+com\group5\appDev\controller\myContoller.class
+com\group5\appDev\service\dogIService.class
+com\group5\appDev\model\dogData.class
+com\group5\appDev\AppDevProjectApplication.class
+com\group5\appDev\service\dogService.class

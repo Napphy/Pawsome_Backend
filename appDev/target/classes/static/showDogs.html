@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>View Dog Images</title>
+</head>
+<body>
+<h1>View Dog Images</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <#list dogs as list>
+    <tr>
+        <td>${list.dogId}</td>
+        <td>
+            <img height="250px" th:src="@{'/display?id=' + ${list.id}}" alt="">
+        </td>
+        <td>${list.dogName}</td>
+        <td>${list.dogBreed}</td>
+        <td>${list.dogAge}</td>
+    </tr>
+    </#list>
+    </tbody>
+</table>
+</body>
+</html>
