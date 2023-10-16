@@ -13,6 +13,7 @@ import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
+//replace '4200' nalang with the port you guys gonna use para sa frontend
 @Controller
 public class myContoller {
     @Autowired
