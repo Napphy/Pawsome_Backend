@@ -29,7 +29,11 @@ public class dogService implements dogIService {
     public void addDog(MultipartFile file,
                        String name,
                        String breed,
-                       int age) {
+                       int age,
+                       String sex,
+                       String size,
+                       String description
+                       ) {
         dogData dog = new dogData();
 
         try {
@@ -42,11 +46,22 @@ public class dogService implements dogIService {
         dog.setDogName(name);
         dog.setDogBreed(breed);
         dog.setDogAge(age);
+        dog.setDogSex(sex);
+        dog.setDogSize(size);
+        dog.setDogDescription(description);
 
         repository.save(dog);
     }
     @Override
-    public dogData updateDog(Long dogId, MultipartFile file, String name, String breed, int age) {
+    public dogData updateDog(Long dogId,
+                             MultipartFile file,
+                             String name,
+                             String breed,
+                             int age,
+                             String sex,
+                             String size,
+                             String description
+                                                ) {
         Optional<dogData> optional = repository.findById(dogId);
         if (optional.isPresent()) {
             dogData dog = optional.get();
@@ -66,6 +81,18 @@ public class dogService implements dogIService {
 
                 if (age > 0) {
                     dog.setDogAge(age);
+                }
+
+                if (sex != null) {
+                    dog.setDogSex(sex);
+                }
+
+                if (size != null) {
+                    dog.setDogSize(size);
+                }
+
+                if (description != null) {
+                    dog.setDogDescription(description);
                 }
 
                 repository.save(dog);

@@ -9,9 +9,9 @@ import java.util.Optional;
 public interface dogIService {
     List<dogData> getAllDogs();
     Optional<dogData> getDog(long id);
-    void addDog(MultipartFile file, String name, String breed, int age);
+    void addDog(MultipartFile file, String name, String breed, int age, String sex, String size, String Description);
 
-    dogData updateDog(Long dogId, MultipartFile file, String name, String breed, int age);
+    dogData updateDog(Long dogId, MultipartFile file, String name, String breed, int age, String sex, String size, String Description);
 
     dogData deleteDog(long id);
 }

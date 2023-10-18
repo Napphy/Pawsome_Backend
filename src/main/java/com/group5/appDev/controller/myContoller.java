@@ -46,8 +46,14 @@ public class myContoller {
     }
 
     @PostMapping("/add-dog")
-    public String saveDog(@RequestParam("file") MultipartFile file, @RequestParam("dogName") String name, @RequestParam("dogBreed") String breed, @RequestParam("dogAge") int age){
-        dogService.addDog(file, name, breed, age);
+    public String saveDog(@RequestParam("file") MultipartFile file,
+                          @RequestParam("dogName") String name,
+                          @RequestParam("dogBreed") String breed,
+                          @RequestParam("dogAge") int age,
+                          @RequestParam("dogSex") String sex,
+                          @RequestParam("dogSize") String size,
+                          @RequestParam("dogDescription") String description){
+        dogService.addDog(file, name, breed, age, sex, size, description);
         return "redirect:/dogs";
     }
 
@@ -70,8 +76,11 @@ public class myContoller {
                             @RequestParam("file") MultipartFile file,
                             @RequestParam("dogName") String name,
                             @RequestParam("dogBreed") String breed,
-                            @RequestParam("dogAge") int age) {
-        dogService.updateDog(dogId, file, name, breed, age);
+                            @RequestParam("dogAge") int age,
+                            @RequestParam("dogSex") String sex,
+                            @RequestParam("dogSize") String size,
+                            @RequestParam("dogDescription") String description) {
+        dogService.updateDog(dogId, file, name, breed, age, sex, size, description);
         return "redirect:/dogs";
     }
 

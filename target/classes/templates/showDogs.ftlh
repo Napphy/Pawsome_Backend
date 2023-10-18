@@ -17,6 +17,9 @@
         <th>Name</th>
         <th>Breed</th>
         <th>Age</th>
+        <th>Sex</th>
+        <th>Size</th>
+        <th>Description</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -30,6 +33,9 @@
         <td>${dog.dogName}</td>
         <td>${dog.dogBreed}</td>
         <td>${dog.dogAge}</td>
+        <td>${dog.dogSex}</td>
+        <td>${dog.dogSize}</td>
+        <td>${dog.dogDescription}</td>
         <td>
             <form method="get" action="/delete/${dog.dogId}">
                 <button type="submit">Delete</button>
