@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,8 @@ public class dogService implements dogIService {
                        int age,
                        String sex,
                        String size,
-                       String description
+                       String description,
+                       Date bday
                        ) {
         dogData dog = new dogData();
 
@@ -49,6 +51,7 @@ public class dogService implements dogIService {
         dog.setDogSex(sex);
         dog.setDogSize(size);
         dog.setDogDescription(description);
+        dog.setDogBDay(bday);
 
         repository.save(dog);
     }
@@ -60,7 +63,8 @@ public class dogService implements dogIService {
                              int age,
                              String sex,
                              String size,
-                             String description
+                             String description,
+                             Date bday
                                                 ) {
         Optional<dogData> optional = repository.findById(dogId);
         if (optional.isPresent()) {
@@ -93,6 +97,10 @@ public class dogService implements dogIService {
 
                 if (description != null) {
                     dog.setDogDescription(description);
+                }
+
+                if (bday != null) {
+                    dog.setDogBDay(bday);
                 }
 
                 repository.save(dog);

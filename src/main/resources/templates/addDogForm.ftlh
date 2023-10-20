@@ -47,6 +47,8 @@ background-color: yellow;
          <label for="large">Large</label><br>
          <label for="dogDescription">Dog's Description:</label><br>
          <textarea id"dogDescription" name="dogDescription" cols="40" rows="5"></textarea><br>
+         <label for="dogBDay">Dog's Birthday:</label><br>
+         <input type="date" id="dogBDay" name="dogBDay"><br>
 
          <br>
          <input type="submit" value="Submit"/>

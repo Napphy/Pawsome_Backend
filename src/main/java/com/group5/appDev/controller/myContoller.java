@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +34,14 @@ public class myContoller {
 
         if (dogOptional.isPresent()) {
             dogData dog = dogOptional.get();
+
+            // Format the date in the "yyyy-MM-dd" format cuz input takes yyyy-mm-dd not mm-dd-yyyy
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDogBDay = sdf.format(dog.getDogBDay());
+
+            model.addAttribute("formattedDogBDay", formattedDogBDay);
             model.addAttribute("dog", dog);
+
         } else {
             return "errorPage";
         }
@@ -52,8 +61,9 @@ public class myContoller {
                           @RequestParam("dogAge") int age,
                           @RequestParam("dogSex") String sex,
                           @RequestParam("dogSize") String size,
-                          @RequestParam("dogDescription") String description){
-        dogService.addDog(file, name, breed, age, sex, size, description);
+                          @RequestParam("dogDescription") String description,
+                          @RequestParam("dogBDay") Date bday){
+        dogService.addDog(file, name, breed, age, sex, size, description, bday);
         return "redirect:/dogs";
     }
 
@@ -63,7 +73,13 @@ public class myContoller {
 
         if (dogOptional.isPresent()) {
             dogData dog = dogOptional.get();
+
+            // Format the date in the "yyyy-MM-dd" format cuz input takes yyyy-mm-dd not mm-dd-yyyy
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDogBDay = sdf.format(dog.getDogBDay());
+
             model.addAttribute("dog", dog);
+            model.addAttribute("formattedDogBDay", formattedDogBDay);
         } else {
             return "errorPage";
         }
@@ -79,8 +95,9 @@ public class myContoller {
                             @RequestParam("dogAge") int age,
                             @RequestParam("dogSex") String sex,
                             @RequestParam("dogSize") String size,
-                            @RequestParam("dogDescription") String description) {
-        dogService.updateDog(dogId, file, name, breed, age, sex, size, description);
+                            @RequestParam("dogDescription") String description,
+                            @RequestParam("dogBDay") Date bday) {
+        dogService.updateDog(dogId, file, name, breed, age, sex, size, description, bday);
         return "redirect:/dogs";
     }
 

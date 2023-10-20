@@ -20,6 +20,7 @@
         <th>Sex</th>
         <th>Size</th>
         <th>Description</th>
+        <th>Birthday</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -36,6 +37,7 @@
         <td>${dog.dogSex}</td>
         <td>${dog.dogSize}</td>
         <td>${dog.dogDescription}</td>
+        <td>${dog.dogBDay}</td>
         <td>
             <form method="get" action="/delete/${dog.dogId}">
                 <button type="submit">Delete</button>

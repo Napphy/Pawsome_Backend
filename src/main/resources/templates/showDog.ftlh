@@ -32,8 +32,10 @@
     <input type="text" id="dogSize" name="dogSize" value="${dog.dogSize}" readonly>
     <br>
     <label for = "dogDescription">Description:</label><br>
-    <textarea id="dogDescription" name="dogDescription" cols="40" rows="5">${dog.dogDescription}</textarea>
+    <textarea id="dogDescription" name="dogDescription" cols="40" rows="5" readonly>${dog.dogDescription}</textarea>
     <br>
+    <label for="dogBDay">Dog's Birthday:</label><br>
+    <input type="date" id="dogBDay" name="dogBDay" value="${formattedDogBDay}" readonly><br>
     <br>
 </form>
 </body>
