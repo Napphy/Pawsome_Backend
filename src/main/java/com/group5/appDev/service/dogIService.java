@@ -5,12 +5,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 
 public interface dogIService {
     List<dogData> getAllDogs();
-    Optional<dogData> getDog(long id);
-    void addDog(MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
+    dogData getDog(long id);
+    dogData addDog(MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
 
     dogData updateDog(Long dogId, MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
 

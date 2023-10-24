@@ -23,18 +23,24 @@ public class dogService implements dogIService {
     }
 
     @Override
-    public Optional<dogData> getDog(long id) {
-        return repository.findById(id);
+    public dogData getDog(long id) {
+        Optional optional= repository.findById(id);
+
+        if(optional.isEmpty())
+            return null;
+        else
+            return (dogData) optional.get();
     }
+
     @Override
-    public void addDog(MultipartFile file,
-                       String name,
-                       String breed,
-                       int age,
-                       String sex,
-                       String size,
-                       String description,
-                       Date bday
+    public dogData addDog(MultipartFile file,
+                          String name,
+                          String breed,
+                          int age,
+                          String sex,
+                          String size,
+                          String description,
+                          Date bday
                        ) {
         dogData dog = new dogData();
 
@@ -54,6 +60,7 @@ public class dogService implements dogIService {
         dog.setDogBDay(bday);
 
         repository.save(dog);
+        return dog;
     }
     @Override
     public dogData updateDog(Long dogId,
