@@ -4,7 +4,6 @@ import com.group5.appDev.model.dogData;
 import com.group5.appDev.repository.dogRepository;
 import com.group5.appDev.service.dogIService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +17,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 //replace '4200' nalang with the port you guys gonna use para sa frontend
 @RestController
-public class myContoller {
+public class myController {
     @Autowired
     private dogIService dogService;
     @Autowired
