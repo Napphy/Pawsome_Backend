@@ -132,7 +132,7 @@ public class myController {
 //        return "redirect:/dogs";
 //    }
 
-    @PostMapping("/update/{dogId}")
+    @PutMapping("/update/{dogId}")
     public String updateDog(@PathVariable Long dogId,
                             @RequestBody dogData dog) {
         dogService.updateDog(dogId, dog);
