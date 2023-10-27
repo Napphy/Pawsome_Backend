@@ -4,11 +4,7 @@ import com.group5.appDev.model.dogData;
 import com.group5.appDev.repository.dogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.sql.Date;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,68 +28,90 @@ public class dogService implements dogIService {
             return (dogData) optional.get();
     }
 
-@Override
+    @Override
+    public dogData addDog(dogData dog) {
+        return repository.save(dog);
+    }
 
-public dogData addDog(dogData dog) {
-    return repository.save(dog);
-}
+//    @Override
+//    public dogData updateDog(Long dogId,
+//                             MultipartFile file,
+//                             String name,
+//                             String breed,
+//                             int age,
+//                             String sex,
+//                             String size,
+//                             String description,
+//                             Date bday) {
+//        Optional<dogData> optional = repository.findById(dogId);
+//        if (optional.isPresent()) {
+//            dogData dog = optional.get();
+//
+//            try {
+//                if (file != null && !file.isEmpty()) {
+//                    dog.setDogImage(Base64.getEncoder().encodeToString(file.getBytes()));
+//                }
+//
+//                if (name != null) {
+//                    dog.setDogName(name);
+//                }
+//
+//                if (breed != null) {
+//                    dog.setDogBreed(breed);
+//                }
+//
+//                if (age > 0) {
+//                    dog.setDogAge(age);
+//                }
+//
+//                if (sex != null) {
+//                    dog.setDogSex(sex);
+//                }
+//
+//                if (size != null) {
+//                    dog.setDogSize(size);
+//                }
+//
+//                if (description != null) {
+//                    dog.setDogDescription(description);
+//                }
+//
+//                if (bday != null) {
+//                    dog.setDogBDay(bday);
+//                }
+//
+//                repository.save(dog);
+//                return dog;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return null; // Handle the error appropriately
+//            }
+//        }
+//        return null; // Handle the case where the dog with the given ID is not found
+//    }
+
 
     @Override
-    public dogData updateDog(Long dogId,
-                             MultipartFile file,
-                             String name,
-                             String breed,
-                             int age,
-                             String sex,
-                             String size,
-                             String description,
-                             Date bday
-                                                ) {
-        Optional<dogData> optional = repository.findById(dogId);
-        if (optional.isPresent()) {
-            dogData dog = optional.get();
+    public dogData updateDog(long id, dogData dogDetails) {
+        Optional<dogData> dog = repository.findById(id);
 
-            try {
-                if (file != null && !file.isEmpty()) {
-                    dog.setDogImage(Base64.getEncoder().encodeToString(file.getBytes()));
-                }
-
-                if (name != null) {
-                    dog.setDogName(name);
-                }
-
-                if (breed != null) {
-                    dog.setDogBreed(breed);
-                }
-
-                if (age > 0) {
-                    dog.setDogAge(age);
-                }
-
-                if (sex != null) {
-                    dog.setDogSex(sex);
-                }
-
-                if (size != null) {
-                    dog.setDogSize(size);
-                }
-
-                if (description != null) {
-                    dog.setDogDescription(description);
-                }
-
-                if (bday != null) {
-                    dog.setDogBDay(bday);
-                }
-
-                repository.save(dog);
-                return dog;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null; // Handle the error appropriately
-            }
+        if (dog.isEmpty()) {
+            return null; // You may want to handle this case differently, e.g., throw an exception or return an error response.
         }
-        return null; // Handle the case where the dog with the given ID is not found
+
+        dogData existingDog = dog.get();
+        existingDog.setDogName(dogDetails.getDogName());
+        existingDog.setDogBreed(dogDetails.getDogBreed());
+        existingDog.setDogAge(dogDetails.getDogAge());
+        existingDog.setDogSex(dogDetails.getDogSex());
+        existingDog.setDogSize(dogDetails.getDogSize());
+        existingDog.setDogImage(dogDetails.getDogImage());
+        existingDog.setDogDescription(dogDetails.getDogDescription());
+        existingDog.setDogBDay(dogDetails.getDogBDay());
+
+        repository.save(existingDog);
+
+        return existingDog;
     }
 
     @Override

@@ -118,19 +118,27 @@ public class myController {
         return "updateDog";
     }
 
+//    @PostMapping("/update/{dogId}")
+//    public String updateDog(@PathVariable Long dogId,
+//                            @RequestParam("file") MultipartFile file,
+//                            @RequestParam("dogName") String name,
+//                            @RequestParam("dogBreed") String breed,
+//                            @RequestParam("dogAge") int age,
+//                            @RequestParam("dogSex") String sex,
+//                            @RequestParam("dogSize") String size,
+//                            @RequestParam("dogDescription") String description,
+//                            @RequestParam("dogBDay") Date bday) {
+//        dogService.updateDog(dogId, file, name, breed, age, sex, size, description, bday);
+//        return "redirect:/dogs";
+//    }
+
     @PostMapping("/update/{dogId}")
     public String updateDog(@PathVariable Long dogId,
-                            @RequestParam("file") MultipartFile file,
-                            @RequestParam("dogName") String name,
-                            @RequestParam("dogBreed") String breed,
-                            @RequestParam("dogAge") int age,
-                            @RequestParam("dogSex") String sex,
-                            @RequestParam("dogSize") String size,
-                            @RequestParam("dogDescription") String description,
-                            @RequestParam("dogBDay") Date bday) {
-        dogService.updateDog(dogId, file, name, breed, age, sex, size, description, bday);
+                            @RequestBody dogData dog) {
+        dogService.updateDog(dogId, dog);
         return "redirect:/dogs";
     }
+
 
     @GetMapping("/delete/{dogId}")
     public String deleteDog(@PathVariable Long dogId) {
