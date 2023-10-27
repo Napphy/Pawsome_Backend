@@ -79,31 +79,23 @@ public class myController {
 
 
     // for Controller
-    @PostMapping("/add-dog")
-    public String saveDog(@RequestParam("file") MultipartFile file,
-                          @RequestParam("dogName") String name,
-                          @RequestParam("dogBreed") String breed,
-                          @RequestParam("dogAge") int age,
-                          @RequestParam("dogSex") String sex,
-                          @RequestParam("dogSize") String size,
-                          @RequestParam("dogDescription") String description,
-                          @RequestParam("dogBDay") Date bday){
-        dogService.addDog(file, name, breed, age, sex, size, description, bday);
-        return "redirect:/dogs";
-    }
-
-// for RestController
-//    @PostMapping("/add-dog/")
-//    public dogData addDogSubmit(@RequestParam("file") MultipartFile file,
+//    @PostMapping("/add-dog")
+//    public String saveDog(@RequestParam("file") MultipartFile file,
 //                          @RequestParam("dogName") String name,
 //                          @RequestParam("dogBreed") String breed,
 //                          @RequestParam("dogAge") int age,
 //                          @RequestParam("dogSex") String sex,
 //                          @RequestParam("dogSize") String size,
 //                          @RequestParam("dogDescription") String description,
-//                         @RequestParam("dogBDay") Date bday){
-//        return dogService.addDog(file, name, breed, age, sex, size, description, bday);
+//                          @RequestParam("dogBDay") Date bday){
+//        dogService.addDog(file, name, breed, age, sex, size, description, bday);
+//        return "redirect:/dogs";
 //    }
+
+    @PostMapping("/add-dog/")
+    public dogData addDogSubmit(@RequestBody dogData dog){
+        return dogService.addDog(dog);
+    }
 
 
     @GetMapping("/update/{dogId}")

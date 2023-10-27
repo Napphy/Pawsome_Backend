@@ -32,36 +32,12 @@ public class dogService implements dogIService {
             return (dogData) optional.get();
     }
 
-    @Override
-    public dogData addDog(MultipartFile file,
-                          String name,
-                          String breed,
-                          int age,
-                          String sex,
-                          String size,
-                          String description,
-                          Date bday
-                       ) {
-        dogData dog = new dogData();
+@Override
 
-        try {
+public dogData addDog(dogData dog) {
+    return repository.save(dog);
+}
 
-            dog.setDogImage(Base64.getEncoder().encodeToString(file.getBytes()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        dog.setDogName(name);
-        dog.setDogBreed(breed);
-        dog.setDogAge(age);
-        dog.setDogSex(sex);
-        dog.setDogSize(size);
-        dog.setDogDescription(description);
-        dog.setDogBDay(bday);
-
-        repository.save(dog);
-        return dog;
-    }
     @Override
     public dogData updateDog(Long dogId,
                              MultipartFile file,

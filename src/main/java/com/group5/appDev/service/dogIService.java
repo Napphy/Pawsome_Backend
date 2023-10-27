@@ -9,9 +9,11 @@ import java.util.List;
 public interface dogIService {
     List<dogData> getAllDogs();
     dogData getDog(long id);
-    dogData addDog(MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
+    
+  //  dogData addDog(MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
 
     dogData updateDog(Long dogId, MultipartFile file, String name, String breed, int age, String sex, String size, String Description, Date bday);
 
     dogData deleteDog(long id);
+    dogData addDog(dogData dog);
 }
